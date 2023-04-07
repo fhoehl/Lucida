@@ -133,6 +133,11 @@ export class AppLucidaCamera extends LitElement {
   async firstUpdated (): Promise<void> {
     if (this.canvas === undefined) return
 
+    const scheme = document.querySelector('meta[name="theme-color"]')
+    if (scheme !== null) {
+      scheme.setAttribute('content', 'black')
+    }
+
     super.connectedCallback()
     await this.setupCamera()
     this.context = this.canvas.getContext('2d')
@@ -279,7 +284,7 @@ export class AppLucidaCamera extends LitElement {
     this.context.globalAlpha = 1 // Reset the opacity
   }
 
-  updateCanvas = () => {
+  updateCanvas = (): any => {
     this.drawVideo()
     requestAnimationFrame(this.updateCanvas)
   }
