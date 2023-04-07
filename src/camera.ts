@@ -37,9 +37,7 @@ export class AppLucidaCamera extends LitElement {
 
   static styles = css`
     :host {
-      overflow: hidden;
       display: block;
-      height: 100vh;
     }
 
     canvas {
@@ -50,15 +48,11 @@ export class AppLucidaCamera extends LitElement {
     }
 
     .controls {
-      position: absolute;
-      background: var(--color-yellow);
       border-radius: 100vw 100vw 0 0;
-      bottom: 0;
-      height: 50vw;
-      width: 100vw;
-      box-sizing: border-box;
-      max-height: 40vh;
-      overflow: hidden;
+      margin-top: -50vw;
+      z-index: 100;
+      background: var(--color-yellow);
+      position: sticky;
     }
 
     .controls__wrapper {
@@ -66,15 +60,25 @@ export class AppLucidaCamera extends LitElement {
       flex-direction: column;
       height: 100%;
       justify-content: flex-end;
-      padding: 4em 20vw;
+      padding: 4em 20vw 1em 20vw;
     }
 
     .photo-input input {
       display: none;
     }
 
+    label {
+      color: var(--color-dark);
+      display: block;
+      font-family: var(--sans);
+      margin-bottom: 0.5em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
     .photo-input {
       text-align: center;
+      font-weight: 900;
       border-radius: 2em;
       color: var(--color-dark);
       border: 1px solid var(--color-dark);
@@ -109,23 +113,22 @@ export class AppLucidaCamera extends LitElement {
             Pick a photo
             <input type="file" id="imageInput" accept="image/*" />
           </label>
+          <label for="overlaySize">Size</label>
           <input
             type="range"
             id="overlaySize"
             min="10"
             max="200"
             value="100"
-            step="1"
-          />
+            step="1" />
+         <label for="overlayOpacity">Opacity</label>
          <input
             type="range"
             id="overlayOpacity"
             min="30"
             max="90"
             value="70"
-            step="2"
-          />
-          <p>${this.error}</p>
+            step="2" />
         </div>
       </div>
     `

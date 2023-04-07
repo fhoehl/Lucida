@@ -12,6 +12,7 @@
   --size-step-4: 2.43rem;
 
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --sans: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
