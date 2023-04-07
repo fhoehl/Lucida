@@ -39,6 +39,7 @@ export class AppLucidaCamera extends LitElement {
     :host {
       overflow: hidden;
       display: block;
+      height: 100vh;
     }
 
     canvas {
