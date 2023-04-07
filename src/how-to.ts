@@ -7,6 +7,12 @@ export class AppLucidaHowTo extends LitElement {
   render (): any {
     return html`
       <article class="flow">
+        <h2>How to</h2>
+        <p>
+          Prop your phone on top of a mug or glass. You will then have to select
+          a picture to draw. Drag and scale it as you see fit. You will be able
+          to see the tip of your pencil through the screen.
+        </p>
         <img
           class="logo"
           alt="Prop your smartphone on top of a mug or glass."
@@ -14,16 +20,7 @@ export class AppLucidaHowTo extends LitElement {
           width="1080"
           height="1920"
         />
-        <p>
-          Prop your phone on top of a mug or glass. You will then have to select
-          a picture to draw. Drag and scale it as you see fit. You will be able
-          to see the tip of your pencil through the screen.
-        </p>
-        <p>
-          Prop your phone on top of a mug or glass. You will then have to select
-          a picture to draw. Drag and scale it as you see fit. You will be able
-          to see the tip of your pencil through the screen.
-        </p>
+        <p>Happy drawing</p>
       </article>
 
       <div class="pull-right">

@@ -56,8 +56,6 @@ export class AppLucidaCamera extends LitElement {
       height: 50vw;
       width: 100vw;
       box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
       max-height: 40vh;
       overflow: hidden;
     }
@@ -67,7 +65,7 @@ export class AppLucidaCamera extends LitElement {
       flex-direction: column;
       height: 100%;
       justify-content: flex-end;
-      padding: 0 20vw;
+      padding: 4em 20vw;
     }
 
     .photo-input input {
@@ -84,6 +82,7 @@ export class AppLucidaCamera extends LitElement {
       font-family: sans-serif;
       font-weight: 900;
       cursor: pointer;
+      margin-bottom: 2em;
     }
 
     .photo-input:hover {
@@ -91,20 +90,24 @@ export class AppLucidaCamera extends LitElement {
     }
 
     #overlaySize {
-      margin-bottom: 1em;
+      margin-bottom: 1.5em;
     }
 
     #overlayOpacity {
-      margin-bottom: 1em;
+      margin-bottom: 1.5em;
     }
   `
 
-  render () {
+  render (): any {
     return html`
       <canvas></canvas>
       <video playsinline muted></video>
       <div class="controls">
         <div class="controls__wrapper">
+          <label class="photo-input">
+            Pick a photo
+            <input type="file" id="imageInput" accept="image/*" />
+          </label>
           <input
             type="range"
             id="overlaySize"
@@ -121,10 +124,6 @@ export class AppLucidaCamera extends LitElement {
             value="70"
             step="2"
           />
-          <label class="photo-input">
-            Pick a photo
-            <input type="file" id="imageInput" accept="image/*" />
-          </label>
           <p>${this.error}</p>
         </div>
       </div>
