@@ -36,6 +36,10 @@ body {
   line-height: 1.7;
 }
 
+main {
+  width: 100%;
+}
+
 h1,
 h2,
 h3 {
