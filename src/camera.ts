@@ -213,7 +213,7 @@ export class AppLucidaCamera extends LitElement {
     try {
       const constraints = {
         video: {
-          // facingMode: { exact: "environment" },
+          facingMode: { exact: 'environment' }
         }
       }
 
