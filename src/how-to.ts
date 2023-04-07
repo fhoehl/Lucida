@@ -1,10 +1,10 @@
-import { LitElement, css, html } from 'lit'
-import { customElement, property } from 'lit/decorators.js'
+import { LitElement, html } from 'lit'
+import { customElement } from 'lit/decorators.js'
 import illustration from './assets/how-to.png'
 
 @customElement('app-lucida-how-to')
 export class AppLucidaHowTo extends LitElement {
-  render () {
+  render (): any {
     return html`
       <article class="flow">
         <img
@@ -32,7 +32,7 @@ export class AppLucidaHowTo extends LitElement {
     `
   }
 
-  protected createRenderRoot () {
+  protected createRenderRoot (): any {
     return this
   }
 }

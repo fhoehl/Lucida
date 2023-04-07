@@ -1,10 +1,10 @@
 import { LitElement, css, html } from 'lit'
-import { customElement, property } from 'lit/decorators.js'
+import { customElement } from 'lit/decorators.js'
 import logo from './assets/icon-1024.png'
 
 @customElement('app-lucida-welcome')
 export class AppLucidaWelcome extends LitElement {
-  render () {
+  render (): any {
     return html`
       <article class="flow">
         <div class="logo">
@@ -76,7 +76,7 @@ export class AppLucidaWelcome extends LitElement {
       }
     }
   `
-  protected createRenderRoot () {
+  createRenderRoot (): any {
     return this
   }
 }

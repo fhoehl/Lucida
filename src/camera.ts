@@ -1,28 +1,25 @@
 import { LitElement, css, html } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
-import { createRef, ref } from 'lit/directives/ref.js'
 import { query } from 'lit/decorators/query.js'
-
-import logo from './assets/icon-1024.png'
 
 @customElement('app-lucida-camera')
 export class AppLucidaCamera extends LitElement {
   @query('canvas')
-    canvas: HTMLCanvasElement
+    canvas: HTMLCanvasElement | undefined
 
   @query('video')
-    video: HTMLElement
+    video: HTMLVideoElement | undefined
 
   @query('#overlaySize')
-    overlaySizeSlider: HTMLElement
+    overlaySizeSlider: HTMLInputElement | undefined
 
   @query('#overlayOpacity')
-    overlayOpacitySlider: HTMLElement
+    overlayOpacitySlider: HTMLInputElement | undefined
 
   @query('#imageInput')
-    imageInput: HTMLInputElement
+    imageInput: HTMLInputElement | undefined
 
-  context = undefined
+  context: CanvasRenderingContext2D | null | undefined
 
   dragging = false
 
@@ -134,11 +131,15 @@ export class AppLucidaCamera extends LitElement {
     `
   }
 
-  firstUpdated () {
+  async firstUpdated (): Promise<void> {
+    if (this.canvas === undefined) return
+
     super.connectedCallback()
-    this.setupCamera()
+    await this.setupCamera()
     this.context = this.canvas.getContext('2d')
     this.setCanvasSize()
+
+    if (this.canvas === undefined || this.imageInput === undefined) return
 
     this.canvas.addEventListener('mousedown', (event) => {
       this.dragging = true
@@ -151,11 +152,16 @@ export class AppLucidaCamera extends LitElement {
       'https://cdn.glitch.global/f97da610-c06c-4706-b826-dedb3f30199d/image.webp?v=1679773240891'
 
     this.imageInput.addEventListener('change', (event) => {
-      const file = event.target.files[0]
-      if (file) {
+      if (event.target == null || this.imageInput === undefined || this.imageInput.files === null) return
+
+      const file = this.imageInput.files[0]
+
+      if (file !== undefined) {
         const reader = new FileReader()
         reader.onload = (e) => {
-          this.overlayImage.src = e.target.result
+          if (e.target != null) {
+            this.overlayImage.src = String(e.target.result)
+          }
         }
         reader.readAsDataURL(file)
       }
@@ -194,12 +200,16 @@ export class AppLucidaCamera extends LitElement {
     })
   }
 
-  setCanvasSize () {
-    this.canvas.width = window.innerWidth
-    this.canvas.height = window.innerHeight
+  setCanvasSize (): void {
+    if (this.canvas !== undefined) {
+      this.canvas.width = window.innerWidth
+      this.canvas.height = window.innerHeight
+    }
   }
 
-  async setupCamera () {
+  async setupCamera (): Promise<void> {
+    if (this.video === undefined) return
+
     try {
       const constraints = {
         video: {
@@ -212,19 +222,22 @@ export class AppLucidaCamera extends LitElement {
 
       this.video.addEventListener('loadeddata', () => {
         this.error = 'ok'
-        this.video.play()
+        if (this.video !== undefined) {
+          void this.video.play()
+        }
         // this.canvas.width = this.video.videoWidth;
         // this.canvas.height = this.video.videoHeight;
         requestAnimationFrame(this.updateCanvas)
       })
-    } catch (err) {
-      this.error = err
-      this.error = navigator.mediaDevices
+    } catch (err: any) {
+      this.error = err.toString()
       console.error('Error setting up camera:', err)
     }
   }
 
-  drawVideo () {
+  drawVideo (): void {
+    if (this.context === undefined || this.context === null || this.canvas === undefined || this.video === undefined) return
+
     const aspectRatio = this.video.videoWidth / this.video.videoHeight
     let newWidth, newHeight
     const canvas = this.canvas
@@ -240,14 +253,14 @@ export class AppLucidaCamera extends LitElement {
     const xOffset = (canvas.width - newWidth) / 2
     const yOffset = (canvas.height - newHeight) / 2
 
-    this.context.drawImage(this.video, xOffset, yOffset, newWidth, newHeight)
+    this.context.drawImage(this.video as CanvasImageSource, xOffset, yOffset, newWidth, newHeight)
 
     // Draw the overlay image with low opacity and maintain aspect ratio
     const overlayImage = this.overlayImage
     const overlaySizeSlider = this.overlaySizeSlider
 
     const imgAspectRatio = overlayImage.width / overlayImage.height
-    const overlayScale = overlaySizeSlider.value / 100
+    const overlayScale = Number(overlaySizeSlider?.value) / 100
     const imgNewWidth = canvas.width * overlayScale
     const imgNewHeight = imgNewWidth / imgAspectRatio
 
@@ -256,7 +269,7 @@ export class AppLucidaCamera extends LitElement {
     const imgYOffset = overlayPosition.y + (canvas.height - imgNewHeight) / 2
 
     // Draw the overlay image with low opacity
-    this.context.globalAlpha = this.overlayOpacitySlider.value / 100 // Set the opacity (0.5 for 50% opacity)
+    this.context.globalAlpha = Number(this.overlayOpacitySlider?.value) / 100 // Set the opacity (0.5 for 50% opacity)
     this.context.drawImage(
       overlayImage,
       imgXOffset,
