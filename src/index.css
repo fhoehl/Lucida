@@ -1,0 +1,144 @@
+@import "modern-css-reset";
+
+:root {
+  --color-dark: #2a2a2a;
+  --color-light: #fafafa;
+  --color-primary: #1a8fe3;
+  --color-yellow: #f2dd0d;
+  --size-step-0: 1rem;
+  --size-step-1: 1.25rem;
+  --size-step-2: 1.56rem;
+  --size-step-3: 1.95rem;
+  --size-step-4: 2.43rem;
+
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: Georgia, serif;
+  font-size: var(--size-step-0);
+  background: var(--color-yellow);
+  color: var(--color-dark);
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+  line-height: 1.7;
+}
+
+h1,
+h2,
+h3 {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+ul,
+ol {
+  padding-inline-start: 1em;
+}
+
+h1 {
+  font-size: var(--size-step-4);
+}
+
+h2 {
+  font-size: var(--size-step-3);
+}
+
+h3 {
+  font-size: var(--size-step-2);
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+}
+
+.flow {
+  padding: 0 2rem;
+}
+
+.flow > * + * {
+  margin-block-start: var(--flow-space, 1em);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+}
+
+img {
+  height: auto;
+}
+
+.logo img {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  margin-top: 2em;
+}
+
+.button {
+  border-radius: 1.6em;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  font-family: sans-serif;
+  display: inline-block;
+}
+.button:hover {
+  border-color: var(--color-dark);
+  color: var(--color-dark);
+}
+.button:focus,
+.button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+article {
+  margin-top: 2em;
+  margin-bottom: 6em;
+}
+
+.pull-right {
+  position: fixed;
+  bottom: 0;
+  background: var(--color-yellow);
+  background: linear-gradient(
+    0deg,
+    var(--color-yellow) 70%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  display: flex;
+  justify-content: end;
+  padding: 2em 1.5em 1.5em 1.5em;
+  left: 0;
+  width: 100%;
+}
+
+.pull-right .button {
+  width: 100%;
+  text-align: center;
+}
