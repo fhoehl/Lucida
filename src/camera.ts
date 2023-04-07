@@ -41,6 +41,8 @@ export class AppLucidaCamera extends LitElement {
     }
 
     canvas {
+      position: sticky;
+      top: 0;
     }
 
     video {
