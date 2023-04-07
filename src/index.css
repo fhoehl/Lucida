@@ -67,7 +67,7 @@ h3 {
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--color-dark);
   text-decoration: inherit;
 }
 

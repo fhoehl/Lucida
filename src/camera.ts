@@ -84,7 +84,7 @@ export class AppLucidaCamera extends LitElement {
       border: 1px solid var(--color-dark);
       padding: 0.25em 1em;
       display: block;
-      font-family: sans-serif;
+      font-family: var(--sans);
       font-weight: 900;
       cursor: pointer;
       margin-bottom: 2em;
@@ -100,6 +100,13 @@ export class AppLucidaCamera extends LitElement {
 
     #overlayOpacity {
       margin-bottom: 1.5em;
+    }
+
+    .help-link {
+      text-align: center;
+      text-decoration: underline;
+      font-family: var(--sans);
+      color: var(--color-dark);
     }
   `
 
@@ -121,14 +128,15 @@ export class AppLucidaCamera extends LitElement {
             max="200"
             value="100"
             step="1" />
-         <label for="overlayOpacity">Opacity</label>
-         <input
+          <label for="overlayOpacity">Opacity</label>
+          <input
             type="range"
             id="overlayOpacity"
             min="30"
             max="90"
             value="70"
             step="2" />
+          <a class="help-link" href="/">Help</a>
         </div>
       </div>
     `
