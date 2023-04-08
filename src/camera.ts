@@ -242,8 +242,6 @@ export class AppLucidaCamera extends LitElement {
         if (this.video !== undefined) {
           void this.video.play()
         }
-        // this.canvas.width = this.video.videoWidth;
-        // this.canvas.height = this.video.videoHeight;
         requestAnimationFrame(this.updateCanvas)
       })
     } catch (err: any) {
