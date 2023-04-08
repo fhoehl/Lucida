@@ -8,7 +8,7 @@ export class AppLucidaWelcome extends LitElement {
     return html`
       <article class="flow">
         <div class="logo">
-          <img alt="open-wc logo" src=${logo} width="1024" height="1024"/>
+          <img alt="logo" src=${logo} width="1024" height="1024"/>
         </div>
         <h1>Lucida</h1>
 
@@ -38,9 +38,6 @@ export class AppLucidaWelcome extends LitElement {
       text-align: center;
     }
 
-    .logo {
-    }
-
     .logo img {
       aspect-ratio: 1 / 1;
       width: 100%;
@@ -57,21 +54,14 @@ export class AppLucidaWelcome extends LitElement {
       cursor: pointer;
       transition: border-color 0.25s;
     }
+
     button:hover {
       border-color: #646cff;
     }
+
     button:focus,
     button:focus-visible {
       outline: 4px auto -webkit-focus-ring-color;
-    }
-
-    @media (prefers-color-scheme: light) {
-      a:hover {
-        color: #747bff;
-      }
-      button {
-        background-color: #f9f9f9;
-      }
     }
   `
   createRenderRoot (): any {
