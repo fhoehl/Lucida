@@ -21,6 +21,7 @@ export class AppLucidaHowTo extends LitElement {
           height="1920"
         />
         <p>Happy drawing&thinsp;!</p>
+        <p>And please do share your drawings using <strong>#madewithlucida</strong>. I would love to see them.</p>
       </article>
 
       <div class="pull-right">
