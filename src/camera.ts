@@ -166,8 +166,7 @@ export class AppLucidaCamera extends LitElement {
       this.error = 'drag'
     })
 
-    this.overlayImage.src =
-      'https://cdn.glitch.global/f97da610-c06c-4706-b826-dedb3f30199d/image.webp?v=1679773240891'
+    this.overlayImage.src = '/flower.jpg'
 
     this.imageInput.addEventListener('change', (event) => {
       if (event.target == null || this.imageInput === undefined || this.imageInput.files === null) return
