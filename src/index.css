@@ -125,6 +125,8 @@ img {
 article {
   margin-top: 2em;
   margin-bottom: 6em;
+  max-width: 65ch;
+  margin-inline: auto;
 }
 
 .pull-right {

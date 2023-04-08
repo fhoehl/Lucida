@@ -50,11 +50,11 @@ export class AppLucidaCamera extends LitElement {
     }
 
     .controls {
-      border-radius: 100vw 100vw 0 0;
-      margin-top: -50vw;
-      z-index: 100;
       background: var(--color-yellow);
+      border-radius: 100vw 100vw 0 0;
+      margin-top: -30vh;
       position: sticky;
+      z-index: 100;
     }
 
     .controls__wrapper {
@@ -79,17 +79,17 @@ export class AppLucidaCamera extends LitElement {
     }
 
     .photo-input {
-      text-align: center;
-      font-weight: 900;
       border-radius: 2em;
-      color: var(--color-dark);
       border: 1px solid var(--color-dark);
-      padding: 0.25em 1em;
+      color: var(--color-dark);
+      cursor: pointer;
       display: block;
       font-family: var(--sans);
       font-weight: 900;
-      cursor: pointer;
+      font-weight: 900;
       margin-bottom: 2em;
+      padding: 0.25em 1em;
+      text-align: center;
     }
 
     .photo-input:hover {

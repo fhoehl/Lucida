@@ -20,7 +20,7 @@ export class AppLucidaHowTo extends LitElement {
           width="1080"
           height="1920"
         />
-        <p>Happy drawing</p>
+        <p>Happy drawing&thinsp;!</p>
       </article>
 
       <div class="pull-right">

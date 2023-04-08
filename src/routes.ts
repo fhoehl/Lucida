@@ -1,10 +1,11 @@
 import { Router } from '@vaadin/router'
+import './home'
 import './how-to'
 import './camera'
 
-function initRouter () {
+async function initRouter (): Promise<void> {
   const router = new Router(document.querySelector('main'))
-  router.setRoutes([
+  await router.setRoutes([
     {
       path: '/',
       component: 'app-lucida-welcome'
@@ -20,6 +21,6 @@ function initRouter () {
   ])
 }
 
-window.addEventListener('load', () => {
-  initRouter()
+window.addEventListener('load', async () => {
+  await initRouter()
 })

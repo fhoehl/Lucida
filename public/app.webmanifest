@@ -1,0 +1,13 @@
+{
+  "name": "Lucida",
+  "start_url": "/",
+  "display": "standalone",
+  "id": "com.fhoehl.lucida",
+  "icons": [
+    {
+      "src": "/icon-1024.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
+    }
+  ]
+}

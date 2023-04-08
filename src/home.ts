@@ -24,11 +24,9 @@ export class AppLucidaWelcome extends LitElement {
           <li>Something to draw</li>
         </ul>
       </article>
-
-        <div class="pull-right">
-          <a class="button" href="/how-to">Start</a>
-        </div>
-
+      <div class="pull-right">
+        <a class="button" href="/how-to">Start drawing</a>
+      </div>
     `
   }
 
