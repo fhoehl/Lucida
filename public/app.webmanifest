@@ -1,13 +1,21 @@
 {
   "name": "Lucida",
+  "id": "com.fhoehl.lucida",
   "start_url": "/",
   "display": "standalone",
-  "id": "com.fhoehl.lucida",
+  "background_color": "#f2dd0d",
+  "theme_color": "#f2dd0d",
   "icons": [
     {
       "src": "/icon-1024.png",
       "type": "image/png",
       "sizes": "1024x1024"
+    },
+    {
+      "src": "/maskable-icon-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
