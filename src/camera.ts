@@ -35,7 +35,7 @@ export class AppLucidaCamera extends LitElement {
   wakeLock: WakeLockSentinel | null = null
 
   @property()
-    error = 'Booting...'
+    log = ['Booting...']
 
   static styles = css`
     :host {
@@ -141,7 +141,7 @@ export class AppLucidaCamera extends LitElement {
             value="70"
             step="2" />
           <a class="help-link" href="/">Help</a>
-          <pre>${this.error}</pre>
+          <pre>${this.log.join('\n')}</pre>
         </div>
       </div>
     `
@@ -166,7 +166,6 @@ export class AppLucidaCamera extends LitElement {
       this.dragging = true
       this.dragStart.x = event.clientX - this.overlayPosition.x
       this.dragStart.y = event.clientY - this.overlayPosition.y
-      this.error = 'drag'
     })
 
     this.overlayImage.src = '/flower.jpg'
@@ -247,14 +246,15 @@ export class AppLucidaCamera extends LitElement {
       this.video.srcObject = stream
 
       this.video.addEventListener('loadeddata', () => {
-        this.error = 'ok'
+        this.log = [...this.log, 'ok']
         if (this.video !== undefined) {
           void this.video.play()
         }
         requestAnimationFrame(this.updateCanvas)
+        void this.requestWakeLock()
       })
     } catch (err: any) {
-      this.error = err.toString()
+      this.log = [...this.log, err.toString()]
       console.error('Error setting up camera:', err)
     }
   }
@@ -314,7 +314,7 @@ export class AppLucidaCamera extends LitElement {
       this.wakeLock = await navigator.wakeLock.request('screen')
     } catch (err: any) {
       if (err instanceof Error) {
-        console.error(`${err.name}, ${err.message}`)
+        this.log = [...this.log, `${err.name}, ${err.message}`]
       }
     }
   }
