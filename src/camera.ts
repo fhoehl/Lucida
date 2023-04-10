@@ -312,6 +312,9 @@ export class AppLucidaCamera extends LitElement {
   requestWakeLock = async (): Promise<void> => {
     try {
       this.wakeLock = await navigator.wakeLock.request('screen')
+      this.wakeLock.addEventListener('release', () => {
+        this.log = [...this.log, 'WakeLock released']
+      })
       this.log = [...this.log, 'WakeLock is active']
     } catch (err: any) {
       if (err instanceof Error) {
