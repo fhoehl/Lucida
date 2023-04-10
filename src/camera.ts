@@ -141,7 +141,6 @@ export class AppLucidaCamera extends LitElement {
             value="70"
             step="2" />
           <a class="help-link" href="/">Help</a>
-          <pre>${this.log.join('\n')}</pre>
         </div>
       </div>
     `
@@ -254,7 +253,7 @@ export class AppLucidaCamera extends LitElement {
         void this.requestWakeLock()
       })
     } catch (err: any) {
-      this.log = [...this.log, err.toString()]
+      this.log = [...this.log, 'Setting up camera ~>', err.toString()]
       console.error('Error setting up camera:', err)
     }
   }
@@ -318,7 +317,7 @@ export class AppLucidaCamera extends LitElement {
       this.log = [...this.log, 'WakeLock is active']
     } catch (err: any) {
       if (err instanceof Error) {
-        this.log = [...this.log, `${err.name}, ${err.message}`]
+        this.log = [...this.log, 'WakeLock request failed ~>', `${err.name}, ${err.message}`]
       }
     }
   }
