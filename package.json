@@ -19,6 +19,7 @@
     "format": "prettier --check ."
   },
   "dependencies": {
+    "@types/dom-screen-wake-lock": "^1.0.1",
     "@vaadin/router": "^1.7.5",
     "lit": "^2.7.2",
     "modern-css-reset": "^1.4.0"

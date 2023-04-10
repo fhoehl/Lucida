@@ -32,6 +32,8 @@ export class AppLucidaCamera extends LitElement {
 
   overlayImage = new Image()
 
+  wakeLock: WakeLockSentinel | null = null
+
   @property()
     error = 'Booting...'
 
@@ -139,6 +141,7 @@ export class AppLucidaCamera extends LitElement {
             value="70"
             step="2" />
           <a class="help-link" href="/">Help</a>
+          <pre>${this.error}</pre>
         </div>
       </div>
     `
@@ -214,6 +217,12 @@ export class AppLucidaCamera extends LitElement {
 
     this.canvas.addEventListener('touchend', () => {
       this.dragging = false
+    })
+
+    document.addEventListener('visibilitychange', () => {
+      if (this.wakeLock !== null && document.visibilityState === 'visible') {
+        void this.requestWakeLock()
+      }
     })
   }
 
@@ -298,5 +307,15 @@ export class AppLucidaCamera extends LitElement {
   updateCanvas = (): any => {
     this.drawVideo()
     requestAnimationFrame(this.updateCanvas)
+  }
+
+  requestWakeLock = async (): Promise<void> => {
+    try {
+      this.wakeLock = await navigator.wakeLock.request('screen')
+    } catch (err: any) {
+      if (err instanceof Error) {
+        console.error(`${err.name}, ${err.message}`)
+      }
+    }
   }
 }
